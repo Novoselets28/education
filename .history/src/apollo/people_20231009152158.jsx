@@ -6,7 +6,12 @@ query Characters{
       results {
         id
         name
+        species
+        status
+        type
         gender
+        origin{name}
+        location {name}
         image
       },
     },

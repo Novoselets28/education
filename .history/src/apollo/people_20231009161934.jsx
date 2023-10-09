@@ -6,7 +6,9 @@ query Characters{
       results {
         id
         name
-        gender
+        location {
+          name
+        }
         image
       },
     },

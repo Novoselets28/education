@@ -4,8 +4,10 @@ import {
 } from '@devexpress/dx-react-grid-material-ui';
 import { useQuery } from '@apollo/client';
 
-// eslint-disable-next-line max-len
-import { EditingState, FilteringState, IntegratedFiltering, IntegratedPaging, PagingState, SearchState, SelectionState } from '@devexpress/dx-react-grid';
+import { EditingState, FilteringState, IntegratedFiltering, 
+IntegratedPaging, PagingState, SearchState, SelectionState } from '@devexpress/dx-react-grid';
+
+import { Bar } from 'react-chartjs-2';
 
 import { GET_CHARACTERS } from './apollo/people';
 
@@ -23,6 +25,31 @@ const App = () => {
     }
   ]);
 
+  const Chart = ( data ) => {
+    const chartData = {
+      labels: data.map((item) => item.name),
+      datasets: [
+        {
+          label: 'Species Count',
+          backgroundColor: 'rgba(75, 192, 192, 0.2)',
+          borderColor: 'rgba(75, 192, 192, 1)',
+          borderWidth: 1,
+          data: data.map((item) => item.species.length)
+        }
+      ]
+    };
+  
+    const chartOptions = {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    };
+  
+    return <Bar data={chartData} options={chartOptions} />;
+  };
+  
   const { loading, error, data } = useQuery(GET_CHARACTERS);
 
   const [rows, setRows] = useState([]);
@@ -62,7 +89,7 @@ const App = () => {
   
     setRows(changedRows);
   };
-
+  
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
@@ -102,6 +129,7 @@ const App = () => {
         />
         <PagingPanel />
       </Grid>
+      <Chart data={data.characters.results} />
     </div>
   );
 };

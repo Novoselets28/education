@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 import {
-  Grid, PagingPanel, SearchPanel, Table, TableEditColumn, TableFilterRow, TableHeaderRow, TableSelection, Toolbar
+  Grid, PagingPanel, SearchPanel, Table, TableEditColumn, TableHeaderRow, TableSelection, Toolbar
 } from '@devexpress/dx-react-grid-material-ui';
 import { useQuery } from '@apollo/client';
 
 // eslint-disable-next-line max-len
-import { EditingState, FilteringState, IntegratedFiltering, IntegratedPaging, PagingState, SearchState, SelectionState } from '@devexpress/dx-react-grid';
+import { EditingState, IntegratedFiltering, IntegratedPaging, PagingState, SearchState, SelectionState } from '@devexpress/dx-react-grid';
 
 import { GET_CHARACTERS } from './apollo/people';
 
 const App = () => {
   const [selection, setSelection] = useState([]);
   const [columns] = useState([
-    { name: 'gender', title: 'Gender' },
+    { name: 'species', title: 'Species' },
     { name: 'name', title: 'Name' },
     {
       name: 'image',
@@ -46,6 +46,7 @@ const App = () => {
         if (changed[row.id]) {
           updatedRow.name = changed[row.id].name;
           updatedRow.species = changed[row.id].species;
+          // Add more properties as needed
         }
         return updatedRow;
       });
@@ -62,6 +63,7 @@ const App = () => {
   
     setRows(changedRows);
   };
+  
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
@@ -73,7 +75,6 @@ const App = () => {
         columns={columns}
       >
         <SearchState defaultValue="" />
-        <FilteringState defaultFilters={[]} />
         <IntegratedFiltering />
         <SelectionState
           selection={selection}
@@ -91,7 +92,6 @@ const App = () => {
         <TableHeaderRow />
         <Toolbar />
         <SearchPanel />
-        <TableFilterRow />
         <TableSelection
           selectByRowClick
         />

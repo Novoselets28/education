@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 import {
-  Grid, PagingPanel, SearchPanel, Table, TableEditColumn, TableFilterRow, TableHeaderRow, TableSelection, Toolbar
+  Grid, PagingPanel, SearchPanel, Table, TableEditColumn, TableHeaderRow, TableSelection, Toolbar
 } from '@devexpress/dx-react-grid-material-ui';
 import { useQuery } from '@apollo/client';
 
 // eslint-disable-next-line max-len
-import { EditingState, FilteringState, IntegratedFiltering, IntegratedPaging, PagingState, SearchState, SelectionState } from '@devexpress/dx-react-grid';
+import { EditingState, IntegratedFiltering, IntegratedPaging, PagingState, SearchState, SelectionState } from '@devexpress/dx-react-grid';
 
 import { GET_CHARACTERS } from './apollo/people';
 
 const App = () => {
   const [selection, setSelection] = useState([]);
   const [columns] = useState([
-    { name: 'gender', title: 'Gender' },
+    { name: 'species', title: 'Species' },
     { name: 'name', title: 'Name' },
     {
       name: 'image',
@@ -23,9 +23,14 @@ const App = () => {
     }
   ]);
 
-  const { loading, error, data } = useQuery(GET_CHARACTERS);
+  // eslint-disable-next-line no-use-before-define
+  const initialRows = data.characters.results.map((character, index) => ({
+    id: index, // Use the index as the ID if your data doesn't provide one
+    ...character
+  }));
+  
 
-  const [rows, setRows] = useState([]);
+  const [rows, setRows] = useState(initialRows);
 
   const commitChanges = ({ added, changed, deleted }) => {
     let changedRows = [...rows];
@@ -41,14 +46,7 @@ const App = () => {
     }
   
     if (changed) {
-      changedRows = changedRows.map((row) => {
-        const updatedRow = { ...row };
-        if (changed[row.id]) {
-          updatedRow.name = changed[row.id].name;
-          updatedRow.species = changed[row.id].species;
-        }
-        return updatedRow;
-      });
+      changedRows = changedRows.map((row) => (changed[row.id] ? { ...row, ...changed[row.id] } : row));
     }
   
     if (deleted) {
@@ -62,6 +60,9 @@ const App = () => {
   
     setRows(changedRows);
   };
+  
+
+  const { loading, error, data } = useQuery(GET_CHARACTERS);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
@@ -73,7 +74,6 @@ const App = () => {
         columns={columns}
       >
         <SearchState defaultValue="" />
-        <FilteringState defaultFilters={[]} />
         <IntegratedFiltering />
         <SelectionState
           selection={selection}
@@ -91,7 +91,6 @@ const App = () => {
         <TableHeaderRow />
         <Toolbar />
         <SearchPanel />
-        <TableFilterRow />
         <TableSelection
           selectByRowClick
         />

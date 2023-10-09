@@ -1,0 +1,1 @@
+export const GET_PEOPLE_QRAPHQL = 'https://rickandmortyapi.com/graphql';

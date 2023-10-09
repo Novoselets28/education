@@ -65,7 +65,7 @@
         1200
       ],
       "max-lines-per-function": [
-        "warn",
+        "error",
         1000
       ],
       "max-params": [
@@ -75,7 +75,7 @@
       "max-len": [
         "error",
         {
-          "code": 120
+          "code": 1200
         }
       ],
       "comma-spacing": [

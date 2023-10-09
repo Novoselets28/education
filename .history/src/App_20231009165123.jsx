@@ -8,6 +8,7 @@ import { useQuery } from '@apollo/client';
 import { EditingState, FilteringState, IntegratedFiltering, IntegratedPaging, PagingState, SearchState, SelectionState } from '@devexpress/dx-react-grid';
 
 import { GET_CHARACTERS } from './apollo/people';
+import Chart from './Chart';
 
 const App = () => {
   const [selection, setSelection] = useState([]);
@@ -62,9 +63,12 @@ const App = () => {
   
     setRows(changedRows);
   };
+  
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
+
+  
 
   return (
     <div>
@@ -102,6 +106,7 @@ const App = () => {
         />
         <PagingPanel />
       </Grid>
+      <Chart data={data.characters.results} />
     </div>
   );
 };
