@@ -84,7 +84,7 @@ const CharacterCreationChart = () => {
 
   const maleCount = data.characters.results.filter((character) => character.gender === 'Male').length;
   const femaleCount = data.characters.results.filter((character) => character.gender === 'Female').length;
-  const unknownCount = data.characters.results.filter((character) => character.gender === 'unknown').length;
+  const unknownCount = data.characters.results.filter((character) => character.gender === 'Unknown').length;
 
   const doughnutChartData = {
     labels: ['Male', 'Female', 'Unknown'],
