@@ -29,6 +29,11 @@ const Header = () => {
               Chart
             </Link>
           </li>
+          <li style={{ margin: '0 16px' }}>
+            <Link to="/storybook" style={{ textDecoration: 'none', color: 'inherit' }}>
+              Storybook
+            </Link>
+          </li>
         </ul>
       </Toolbar>
     </AppBar>

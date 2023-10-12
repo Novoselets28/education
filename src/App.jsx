@@ -5,6 +5,7 @@ import MainPage from './components/MainPage';
 import Chart from './components/Chart';
 import Header from './components/Header';
 import { AppWrapper } from './styles/App';
+import Storybook from './components/Storybook';
 
 const App = () => {
   
@@ -14,6 +15,7 @@ const App = () => {
       <Routes>
         <Route path='/' element={<MainPage/>}/>
         <Route path='/chart' element={<Chart/>}/>
+        <Route path='/storybook' element={<Storybook/>}/>
       </Routes>
     </AppWrapper>
   );
