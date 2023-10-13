@@ -1,9 +1,9 @@
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 
-import { GET_PEOPLE_QRAPHQL } from '../api';
+import { GET_CHARACTERS_QRAPHQL } from '../api';
 
 const client = new ApolloClient({
-  uri: GET_PEOPLE_QRAPHQL,
+  uri: GET_CHARACTERS_QRAPHQL,
   cache: new InMemoryCache()
 });
 

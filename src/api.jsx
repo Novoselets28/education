@@ -1,1 +1,1 @@
-export const GET_PEOPLE_QRAPHQL = 'https://rickandmortyapi.com/graphql';
+export const GET_CHARACTERS_QRAPHQL = 'https://rickandmortyapi.com/graphql';
