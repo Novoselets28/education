@@ -2,15 +2,15 @@ import { Button } from '@mui/material';
 import React, { useState } from 'react';
 
 const Storybook = () => {
-  const [name, setName] = useState('Hello');
+  const [btn, setName] = useState('Hello');
 
   const handleButtonClick = () => {
-    setName(name === 'Hello' ? 'Goodbye' : 'Hello');
+    setName(btn === 'Hello' ? 'Goodbye' : 'Hello');
   };
 
   return (
     <div>
-      <Button onClick={handleButtonClick}>{name}</Button>
+      <Button onClick={handleButtonClick}>{btn}</Button>
     </div>
   );
 };

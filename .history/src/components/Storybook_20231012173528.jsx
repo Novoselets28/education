@@ -1,7 +1,7 @@
 import { Button } from '@mui/material';
 import React, { useState } from 'react';
 
-const Storybook = () => {
+const Storybook = ({name}) => {
   const [name, setName] = useState('Hello');
 
   const handleButtonClick = () => {
