@@ -1,11 +1,8 @@
+// MainPage.stories.js
 import React from 'react';
-
 import { Meta, Story } from '@storybook/react';
-
 import { ApolloProvider } from '@apollo/client';
-
 import client from '../apollo/client';
-
 import MainPage from './MainPage';
 
 export default {
@@ -20,12 +17,12 @@ export default {
   ]
 } as Meta;
 
-const Template: Story = (args) => <MainPage disabled={false} {...args} />;
+const Template: Story = (args) => <MainPage disabled={undefined} {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {};
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  disabled: true
+  disabled: true, // Pass the disabled prop to disable the search input
 };

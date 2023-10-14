@@ -1,5 +1,6 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
+import { linkTo } from '@storybook/addon-links';
 
 import { Meta, Story } from '@storybook/react';
 
@@ -33,5 +34,13 @@ WithLinks.args = {
   hoverBackgroundColor: 'yellow'
 };
 
+WithLinks.storyName = 'MainPage';
 
+export const NavigateToAnotherStory = () => {
+  return (
+    <button onClick={() => linkTo('MainPage', 'MainPage')()}>
+      Navigate to Header with Links
+    </button>
+  );
+};
 

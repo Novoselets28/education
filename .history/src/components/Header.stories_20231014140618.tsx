@@ -8,6 +8,7 @@ import Header from './Header';
 export default {
   title: 'Header',
   component: Header,
+  argTypes: { onClick: { action: 'clicked' } },
   decorators: [(Story) => <MemoryRouter>{Story()}</MemoryRouter>]
 } as Meta;
 

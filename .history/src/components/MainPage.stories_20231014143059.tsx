@@ -20,12 +20,12 @@ export default {
   ]
 } as Meta;
 
-const Template: Story = (args) => <MainPage disabled={false} {...args} />;
+const Template: Story = (args) => <MainPage disabled={undefined} {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {};
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  disabled: true
+  disabled: true // Pass the disabled prop to disable the search input
 };

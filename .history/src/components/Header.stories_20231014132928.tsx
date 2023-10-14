@@ -1,5 +1,10 @@
 import React from 'react';
+
 import { MemoryRouter } from 'react-router-dom';
+
+import { linkTo } from '@storybook/addon-links';
+
+import { action } from '@storybook/addon-actions';
 
 import { Meta, Story } from '@storybook/react';
 
@@ -33,5 +38,15 @@ WithLinks.args = {
   hoverBackgroundColor: 'yellow'
 };
 
+WithLinks.storyName = 'Header with Links';
 
-
+export const NavigateToAnotherStory = () => {
+  return (
+    <button onClick={() => {
+      action('Button Clicked')();
+      linkTo('Header', 'Header with Links')();
+    }}>
+      Navigate to Header with Links
+    </button>
+  );
+};

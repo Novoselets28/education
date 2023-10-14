@@ -1,5 +1,6 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
+import { linkTo } from '@storybook/addon-links';
 
 import { Meta, Story } from '@storybook/react';
 

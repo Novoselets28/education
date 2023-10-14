@@ -27,5 +27,5 @@ Default.args = {};
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  disabled: true
+  disabled: true // Pass the disabled prop to disable the search input
 };

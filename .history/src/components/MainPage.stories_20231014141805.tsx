@@ -20,12 +20,20 @@ export default {
   ]
 } as Meta;
 
-const Template: Story = (args) => <MainPage disabled={false} {...args} />;
+const Template: Story = (args) => <MainPage {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {};
 
-export const Disabled = Template.bind({});
-Disabled.args = {
-  disabled: true
+export const WithDisabledSearch = Template.bind({});
+WithDisabledSearch.args = {};
+
+WithDisabledSearch.storyName = 'MainPage with Disabled Search';
+
+WithDisabledSearch.parameters = {
+  initialState: {
+    search: {
+      value: '' // Set an empty string to disable the search feature.
+    }
+  }
 };

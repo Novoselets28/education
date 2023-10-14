@@ -1,6 +1,5 @@
 // MainPage.js
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
 import {
   Grid, 
   PagingPanel, 
@@ -117,10 +116,6 @@ const MainPage = ({ disabled }) => {
       </Grid>
     </div>
   );
-};
-
-MainPage.propTypes = {
-  disabled: PropTypes.bool.isRequired
 };
 
 export default MainPage;

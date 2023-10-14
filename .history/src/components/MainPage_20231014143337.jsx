@@ -119,8 +119,4 @@ const MainPage = ({ disabled }) => {
   );
 };
 
-MainPage.propTypes = {
-  disabled: PropTypes.bool.isRequired
-};
-
 export default MainPage;
