@@ -37,7 +37,7 @@ const Header = ({ backgroundColor, isSticky }) => {
         </Typography>
         <ul style={{ listStyle: 'none', paddingLeft: 0, display: 'flex' }}>
           <li style={{ margin: '0 16px' }}>
-            <Link to="/" style={{ ...linkStyle }}>
+            <Link to="/" style={{...linkStyle }}>
               MainPage
             </Link>
           </li>
