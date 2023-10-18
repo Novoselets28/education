@@ -21,6 +21,6 @@ const Storybook = () => {
 Button.propTypes = {
     name: PropTypes.string,
     onClick: PropTypes.func
-}
+};
 
 export default Storybook;

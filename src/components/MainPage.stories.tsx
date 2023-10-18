@@ -20,12 +20,22 @@ export default {
   ]
 } as Meta;
 
-const Template: Story = (args) => <MainPage disabled={false} {...args} />;
+const Template: Story = (args) => <MainPage disabled={false} paginationPosition={''} {...args} />;
 
-export const Default = Template.bind({});
-Default.args = {};
+export const PaginationLeft = Template.bind({});
+PaginationLeft.args = {
+  paginationPosition: 'left',
+  disabled: false
+};
+
+export const PaginationRight = Template.bind({});
+PaginationRight.args = {
+  paginationPosition: 'right',
+  disabled: false
+};
 
 export const Disabled = Template.bind({});
 Disabled.args = {
+  paginationPosition: 'left',
   disabled: true
 };

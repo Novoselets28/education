@@ -25,7 +25,7 @@ import {
 
 import { GET_CHARACTERS } from '../apollo/people';
 
-const MainPage = ({ disabled }) => {
+const MainPage = ({ disabled, paginationPosition }) => {
   const [selection, setSelection] = useState([]);
   const [columns] = useState([
     { name: 'gender', title: 'Gender' },
@@ -99,6 +99,7 @@ const MainPage = ({ disabled }) => {
         <PagingState
           defaultCurrentPage={0}
           pageSize={5}
+          paginationPosition={paginationPosition}
         />
         <IntegratedPaging />
         <Table />
@@ -120,7 +121,8 @@ const MainPage = ({ disabled }) => {
 };
 
 MainPage.propTypes = {
-  disabled: PropTypes.bool.isRequired
+  disabled: PropTypes.bool.isRequired,
+  paginationPosition: PropTypes.oneOf(['left', 'right']).isRequired
 };
 
 export default MainPage;
