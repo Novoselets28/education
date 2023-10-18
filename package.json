@@ -3,16 +3,29 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@apollo/client": "^3.8.4",
+    "@apollo/react-hooks": "^4.0.0",
     "@devexpress/dx-react-core": "^4.0.5",
     "@devexpress/dx-react-grid": "^4.0.5",
     "@devexpress/dx-react-grid-material-ui": "^4.0.5",
     "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.14.12",
+    "@mui/material": "^5.14.12",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "chart.js": "^4.4.0",
+    "chartjs-adapter-date-fns": "^3.0.0",
+    "date-fns": "^2.30.0",
+    "eslint": "^8.50.0",
+    "graphql": "^16.8.1",
+    "luxon": "^3.4.3",
     "react": "^18.2.0",
+    "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.16.0",
     "react-scripts": "5.0.1",
+    "styled-components": "^6.0.8",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -22,10 +35,98 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
+    "env": {
+      "browser": true,
+      "es2021": true
+    },
     "extends": [
+      "plugin:react/recommended",
       "react-app",
       "react-app/jest"
-    ]
+    ],
+    "overrides": [
+      {
+        "env": {
+          "node": true
+        },
+        "files": [
+          ".eslintrc.{js,cjs}"
+        ],
+        "parserOptions": {
+          "sourceType": "script"
+        }
+      }
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "ecmaVersion": "latest",
+      "sourceType": "module"
+    },
+    "plugins": [
+      "@typescript-eslint",
+      "react"
+    ],
+    "rules": {
+      "max-lines": [
+        "error",
+        1200
+      ],
+      "max-lines-per-function": [
+        "warn",
+        1000
+      ],
+      "max-params": [
+        "error",
+        7
+      ],
+      "max-len": [
+        "error",
+        {
+          "code": 120
+        }
+      ],
+      "comma-spacing": [
+        "error",
+        {
+          "before": false,
+          "after": true
+        }
+      ],
+      "object-curly-spacing": [
+        "warn",
+        "always"
+      ],
+      "space-before-blocks": "warn",
+      "comma-dangle": [
+        "error",
+        "never"
+      ],
+      "semi": [
+        "warn",
+        "always"
+      ],
+      "dot-notation": "error",
+      "quotes": [
+        "error",
+        "single"
+      ],
+      "import/order": [
+        "error",
+        {
+          "groups": [
+            "builtin",
+            "external",
+            "internal",
+            "parent",
+            "sibling",
+            "index",
+            "object",
+            "type"
+          ],
+          "newlines-between": "always-and-inside-groups"
+        }
+      ]
+    }
   },
   "browserslist": {
     "production": [
