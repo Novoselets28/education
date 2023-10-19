@@ -21,8 +21,7 @@ import {
   SelectionState
 } from '@devexpress/dx-react-grid';
 
-import { GET_CHARACTERS } from '../../apollo/people';
-
+import { GET_CHARACTERS } from '../apollo/people';
 
 const MainPage = () => {
   const [selection, setSelection] = useState([]);
