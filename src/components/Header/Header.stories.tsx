@@ -13,7 +13,6 @@ export default {
 
 type CustomColorArgs = {
   backgroundColor: string;
-  hoverBackgroundColor: string;
 };
 
 const Template: Story<CustomColorArgs> = (args) => {
@@ -49,7 +48,11 @@ const Template: Story<CustomColorArgs> = (args) => {
           </>;};
 
 export const Default = Template.bind({});
-Default.args = {};
+Default.args = {
+  isSticky: true,
+  backgroundColor: 'blue',
+  hoverBackgroundColor: 'red'
+};
 
 export const CustomColor = Template.bind({});
 CustomColor.args = {
@@ -59,7 +62,5 @@ CustomColor.args = {
 
 export const StickyHeader = Template.bind({});
 StickyHeader.args = {
-  backgroundColor: 'blue',
-  hoverBackgroundColor: 'red',
   isSticky: true
 };

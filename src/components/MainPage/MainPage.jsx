@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import {
   Grid, 
   PagingPanel, 
@@ -22,7 +23,6 @@ import {
 } from '@devexpress/dx-react-grid';
 
 import { GET_CHARACTERS } from '../../apollo/people';
-
 
 const MainPage = () => {
   const [selection, setSelection] = useState([]);
@@ -116,6 +116,10 @@ const MainPage = () => {
       </Grid>
     </div>
   );
+};
+
+MainPage.propTypes = {
+  disabled: PropTypes.bool.isRequired
 };
 
 export default MainPage;
