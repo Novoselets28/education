@@ -13,7 +13,7 @@ export default {
   title: 'Chart',
   component: Chart,
   decorators: [
-    (Story) => (
+    (Story: unknown) => (
       <MockedProvider
         mocks={[
           {

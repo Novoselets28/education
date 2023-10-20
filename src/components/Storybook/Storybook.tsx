@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 
 import { Button } from '@mui/material';
 
@@ -16,11 +15,6 @@ const Storybook = () => {
       <Button onClick={handleButtonClick}>{name}</Button>
     </div>
   );
-};
-
-Button.propTypes = {
-    name: PropTypes.string,
-    onClick: PropTypes.func
 };
 
 export default Storybook;

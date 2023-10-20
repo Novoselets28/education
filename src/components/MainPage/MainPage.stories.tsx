@@ -20,7 +20,7 @@ export default {
   ]
 } as Meta;
 
-const Template: Story = (args) => <MainPage disabled={false} {...args} />;
+const Template: Story = (args) => <MainPage {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import { Route, Routes } from 'react-router-dom';
 
 import MainPage from './components/MainPage/MainPage';
@@ -11,7 +11,7 @@ const App = () => {
   
   return (
     <AppWrapper>
-      <Header/>
+      <Header backgroundColor={''} isSticky={false}/>
       <Routes>
         <Route path='/' element={<MainPage/>}/>
         <Route path='/chart' element={<Chart/>}/>

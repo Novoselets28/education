@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
 import {
   Grid, 
   PagingPanel, 
@@ -19,27 +18,45 @@ import {
   IntegratedPaging,
   PagingState,
   SearchState,
-  SelectionState
+  SelectionState,
+  ChangeSet
 } from '@devexpress/dx-react-grid';
 
 import { GET_CHARACTERS } from '../../apollo/people';
 
-const MainPage = () => {
-  const [selection, setSelection] = useState([]);
+interface Character {
+  id: number;
+  gender: string[];
+  name: string[];
+  image: string[];
+}
+
+interface AddedCharacter {
+  gender: string[];
+  name: string[];
+  image: string[];
+}
+
+interface DeletedCharacter {
+  id: number;
+}
+
+const MainPage: React.FC = () => {
+  const [selection, setSelection] = useState<(string | number)[]>([]);
   const [columns] = useState([
     { name: 'gender', title: 'Gender' },
     { name: 'name', title: 'Name' },
     {
       name: 'image',
       title: 'Image',
-      getCellValue: (row) => (
+      getCellValue: (row: { image: string; name: string; }) => (
         <img src={row.image} alt={row.name} style={{ maxWidth: '100px' }} />
       )
     }
   ]);
 
   const { loading, error, data } = useQuery(GET_CHARACTERS);
-  const [rows, setRows] = useState([]);
+  const [rows, setRows] = useState<Character[]>([]);
 
   useEffect(() => {
     if (!loading && data) {
@@ -47,36 +64,34 @@ const MainPage = () => {
     }
   }, [data, loading]);
 
-  const commitChanges = ({ added, deleted }) => {
+  const commitChanges = ({ added, deleted }: ChangeSet) => {
     let newRows = rows.slice();
-
+  
     if (added) {
       console.log('Add Rows:', added);
-
       const startingAddedId = rows.length > 0 ? rows[rows.length - 1].id + 1 : 0;
-      added.forEach((addedRow, index) => {
+      added.forEach((addedRow: AddedCharacter, index: number) => {
         newRows.push({
           id: startingAddedId + index,
           ...addedRow
         });
       });
     }
-
+  
     if (deleted) {
       console.log('Deleted Rows:', deleted);
-
-      const deletedIds = deleted.map((deletedRowIndex) => newRows[deletedRowIndex].id);
+  
+      const deletedIds = deleted as number[];
       console.log('Deleted IDs:', deletedIds);
-
+  
       newRows = newRows.filter((row) => !deletedIds.includes(row.id));
-
       console.log('newRows:', newRows);
     }
-
+  
     setRows(newRows);
     setSelection([]);
   };
-
+  
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
@@ -116,10 +131,6 @@ const MainPage = () => {
       </Grid>
     </div>
   );
-};
-
-MainPage.propTypes = {
-  disabled: PropTypes.bool.isRequired
 };
 
 export default MainPage;
