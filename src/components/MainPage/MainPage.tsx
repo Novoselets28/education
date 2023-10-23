@@ -37,10 +37,6 @@ interface AddedCharacter {
   image: string[];
 }
 
-interface DeletedCharacter {
-  id: number;
-}
-
 const MainPage: React.FC = () => {
   const [selection, setSelection] = useState<(string | number)[]>([]);
   const [columns] = useState([
@@ -79,18 +75,14 @@ const MainPage: React.FC = () => {
     }
   
     if (deleted) {
-      console.log('Deleted Rows:', deleted);
-  
-      const deletedIds = deleted as number[];
-      console.log('Deleted IDs:', deletedIds);
-  
+      const deletedIds = (deleted as number[]).map((deletedRowIndex) => newRows[deletedRowIndex].id);
       newRows = newRows.filter((row) => !deletedIds.includes(row.id));
-      console.log('newRows:', newRows);
     }
   
     setRows(newRows);
     setSelection([]);
   };
+  
   
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;

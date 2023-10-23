@@ -51,12 +51,12 @@ const Template: Story<CustomColorArgs> = (args) => {
 export const Default = Template.bind({});
 Default.args = {
   isSticky: true,
-  backgroundColor: 'blue',
+  backgroundColor: 'blue'
 };
 
 export const CustomColor = Template.bind({});
 CustomColor.args = {
-  backgroundColor: 'blue',
+  backgroundColor: 'blue'
 };
 
 export const StickyHeader = Template.bind({});
