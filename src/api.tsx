@@ -1,0 +1,1 @@
+export const GET_CHARACTERS_QRAPHQL:string = 'https://rickandmortyapi.com/graphql';
